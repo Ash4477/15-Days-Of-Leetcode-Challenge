@@ -5,7 +5,6 @@ class Solution {
         for (int i=0; i<n;i++) {
             result[resIdx++] = nums[i];
             result[resIdx++] = nums[i+n];
-            System.out.println(3);
         }
         return result;
     }
