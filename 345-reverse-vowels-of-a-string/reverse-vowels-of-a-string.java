@@ -6,21 +6,21 @@ class Solution
 
     public String reverseVowels(String s) 
     {
-        StringBuilder res = new StringBuilder(s);
+        char[] res = s.toCharArray();
         int left = 0;
-        int right = s.length()-1;
+        int right = res.length-1;
 
         while (left < right) {
-            if (!isVowel(s.charAt(left))) left++;
+            if (!isVowel(res[left])) left++;
             
-            if (!isVowel(s.charAt(right))) right--;
+            if (!isVowel(res[right])) right--;
 
-            if (isVowel(s.charAt(left)) && isVowel(s.charAt(right))) {
-                char temp = s.charAt(left);
-                res.setCharAt(left++, s.charAt(right));
-                res.setCharAt(right--, temp);
+            if (isVowel(res[left]) && isVowel(res[right])) {
+                char temp = res[left];
+                res[left++] = res[right];
+                res[right--] = temp;
             }
         }
-        return res.toString();
+        return new String(res);
     }
   }
