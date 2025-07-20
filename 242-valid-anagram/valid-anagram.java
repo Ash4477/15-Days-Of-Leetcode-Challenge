@@ -6,7 +6,6 @@ class Solution {
         for (int i=0; i< s.length(); i++) {
             counter[(s.charAt(i)-'a')]++;
             counter[(t.charAt(i)-'a')]--;
-
         }
 
         for (int i=0; i<counter.length; i++) {
