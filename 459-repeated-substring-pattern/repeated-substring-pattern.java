@@ -3,6 +3,7 @@ class Solution {
         String subStr = "";
         for (int i=0; i<s.length()/2; i++) {
             subStr += s.charAt(i);
+            if (s.length() % subStr.length() != 0) continue;
             String tempStr = subStr;
             while(tempStr.length() < s.length()) {
                 tempStr += subStr;
