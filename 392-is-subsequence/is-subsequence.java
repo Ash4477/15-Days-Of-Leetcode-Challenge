@@ -2,9 +2,8 @@ class Solution {
     public boolean isSubsequence(String s, String t) {
         int sPoint = 0;
         int tPoint = 0;
-        int n1 = s.length();
-        int n2 = t.length();
-        while (sPoint < n1 && tPoint<n2 ) {
+
+        while (sPoint < s.length() && tPoint<t.length() ) {
             if (s.charAt(sPoint) == t.charAt(tPoint)) {
                 sPoint++;
                 tPoint++;
@@ -13,7 +12,7 @@ class Solution {
             }
         }
 
-        if (sPoint == n1) return true;
+        if (sPoint == s.length()) return true;
         return false;
     }
 }
