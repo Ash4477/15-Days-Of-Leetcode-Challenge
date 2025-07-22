@@ -26,8 +26,10 @@ class Solution {
             li2.add(num);
         }
        }
-
-       return Arrays.asList(li1, li2);
+        List<List<Integer>> ans = new ArrayList<>();
+        ans.add(li1);
+        ans.add(li2);
+       return ans;
     }
 }
   
