@@ -12,20 +12,12 @@ class Solution {
         set2.add(num);
        }
 
-       List<Integer> li1 = new ArrayList<>();
-       List<Integer> li2 = new ArrayList<>();
+       List<Integer> li1 = new ArrayList<>(set1);
+       List<Integer> li2 = new ArrayList<>(set2);
 
-       for (int num: set1) {
-        if (!set2.contains(num)) {
-            li1.add(num);
-        }
-       }
-
-       for (int num: set2) {
-        if (!set1.contains(num)) {
-            li2.add(num);
-        }
-       }
+       li1.removeAll(set2);
+       li2.removeAll(set1);
+       
         List<List<Integer>> ans = new ArrayList<>();
         ans.add(li1);
         ans.add(li2);
