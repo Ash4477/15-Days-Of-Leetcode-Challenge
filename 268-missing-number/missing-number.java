@@ -1,15 +1,11 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        boolean[] check = new boolean[nums.length+1];
+        int res = nums.length;
 
-        for (int num: nums) {
-            check[num] = true;
+        for (int i=0; i<nums.length; i++) {
+            res += i - nums[i];
         }
 
-        for (int i=0; i<check.length; i++) {
-            if (!check[i]) return i;
-        }
-
-        return -1;
+        return res;
     }
 }
