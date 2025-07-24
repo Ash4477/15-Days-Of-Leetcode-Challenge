@@ -1,19 +1,23 @@
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
-        String[] result = new String[names.length];
-        
-        for (int k=0; k<heights.length; k++) {
-            int largest = -1;
-            int largestIdx = -1;
-            System.out.println("HUYE");
-            for (int i=0; i<heights.length; i++) {
-                if (heights[i] != -1 && heights[i] > largest) {
-                    largest = heights[i];
-                    largestIdx = i;
-                }
-            }
-            heights[largestIdx] = -1;
-            result[k] = names[largestIdx];
+        int n = names.length;
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for (int i=0; i<n; i++) {
+            map.put(heights[i], i);
+        }
+
+        Arrays.sort(heights);
+        for (int i=0; i<n/2; i++) {
+            int temp = heights[i];
+            heights[i] = heights[n-1-i];
+            heights[n-1-i] = temp;
+        }
+
+        String[] result = new String[n];
+
+        for (int i=0; i<n; i++) {
+            result[i] = names[map.get(heights[i])];
         }
 
         return result;
