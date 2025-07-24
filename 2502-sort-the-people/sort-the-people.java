@@ -1,10 +1,10 @@
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
         int n = names.length;
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,String> map = new HashMap<>();
 
         for (int i=0; i<n; i++) {
-            map.put(heights[i], i);
+            map.put(heights[i], names[i]);
         }
 
         Arrays.sort(heights);
@@ -14,12 +14,11 @@ class Solution {
             heights[n-1-i] = temp;
         }
 
-        String[] result = new String[n];
 
         for (int i=0; i<n; i++) {
-            result[i] = names[map.get(heights[i])];
+            names[i] = map.get(heights[i]);
         }
 
-        return result;
+        return names;
     }
 }
