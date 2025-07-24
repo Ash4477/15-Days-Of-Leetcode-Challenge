@@ -8,21 +8,24 @@ class Solution {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
-        StringBuilder res = new StringBuilder();
+        List<List<Character>> buckets = new ArrayList<>();
+        for (int i=0; i<=len; i++) {
+            buckets.add(new ArrayList<>());
+        }
 
-        while (res.length() != len) {
-            char largest = 0;
-            int count = 0;
-            for (char c: map.keySet()) {
-                int charCount = map.get(c);
-                if (charCount > count){
-                    largest = c;
-                    count = charCount;
+        for (Map.Entry<Character,Integer> entry: map.entrySet()) {
+            buckets.get(entry.getValue()).add(entry.getKey());
+        }
+
+        StringBuilder res = new StringBuilder();
+        for (int freq=len; freq>0; freq--) {
+            for (char c: buckets.get(freq)) {
+                for (int i=0; i<freq; i++) {
+                    res.append(c);
                 }
             }
-            for (int i=0; i<count; i++) res.append(largest);
-            map.remove(largest);
         }
+      
 
         return res.toString();
     }
