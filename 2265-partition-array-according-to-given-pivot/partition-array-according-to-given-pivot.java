@@ -1,53 +1,22 @@
 class Solution {
     public int[] pivotArray(int[] nums, int pivot) {
-        Map<Integer,List<Integer>> map = new HashMap<>();
+        List<Integer> less = new ArrayList<>();
+        List<Integer> equal = new ArrayList<>();
+        List<Integer> greater = new ArrayList<>();
 
-        for (int i=0; i<nums.length; i++) {
-            if (nums[i] == pivot) insert(0, nums[i], map);
-            else if (nums[i] > pivot) insert(1, nums[i], map);
-            else insert(-1, nums[i], map);
+        for (int num : nums) {
+            if (num < pivot) less.add(num);
+            else if (num == pivot) equal.add(num);
+            else greater.add(num);
         }
 
-        int[] result = new int[nums.length];
-        int resIdx = 0;
+        int[] res = new int[nums.length];
+        int idx = 0;
 
-        List<Integer> li;
-        
-        if (map.containsKey(-1)) {
-            li = map.get(-1);
-            for (int i=0; i<li.size(); i++) {
-                result[resIdx++] = li.get(i);
-            }
-        } 
+        for (int num : less) res[idx++] = num;
+        for (int num : equal) res[idx++] = num;
+        for (int num : greater) res[idx++] = num;
 
-        if (map.containsKey(0)) {
-
-            li = map.get(0);
-
-            for (int i=0; i<li.size(); i++) {
-                result[resIdx++] = li.get(i);
-            }
-        }
-
-        if (map.containsKey(1)) {
-            
-            li = map.get(1);
-            for (int i=0; i<li.size(); i++) {
-                result[resIdx++] = li.get(i);
-            }
-        }
-
-
-
-        return result;
+        return res;
     }
-
-    public void insert(int key, int value, Map<Integer,List<Integer>> map) {
-        if (map.containsKey(key)) {
-            map.get(key).add(value);
-        } else {
-            map.put(key, new ArrayList<>());
-            map.get(key).add(value);
-        }
-    };
 }
