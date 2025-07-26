@@ -7,14 +7,10 @@ class Solution {
             Arrays.sort(c);
             String key = new String(c);
 
-            if (map.containsKey(key)) {
-                map.get(key).add(s);
-            } else {
-                List<String> li = new ArrayList<>();
-                li.add(s);
-                map.put(key, li);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
             }
-
+            map.get(key).add(s);
         }
 
         return new ArrayList<>(map.values());
