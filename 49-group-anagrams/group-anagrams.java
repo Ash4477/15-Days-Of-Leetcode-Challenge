@@ -3,14 +3,23 @@ class Solution {
         Map<String, List<String>> map = new HashMap<>();
 
         for (String s: strs) {
-            char[] c = s.toCharArray();
-            Arrays.sort(c);
-            String key = new String(c);
-
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
+            int[] count = new int[26];
+            for (char c: s.toCharArray()) {
+                count[c-'a']++;
             }
-            map.get(key).add(s);
+            StringBuilder sb = new StringBuilder();
+            for (int num: count) {
+                sb.append(num).append("#");
+            }
+            String key = sb.toString();
+
+            if (map.containsKey(key)) {
+                map.get(key).add(s);
+            } else {
+                List<String> li = new ArrayList<>();
+                li.add(s);
+                map.put(key, li);
+            }
         }
 
         return new ArrayList<>(map.values());
