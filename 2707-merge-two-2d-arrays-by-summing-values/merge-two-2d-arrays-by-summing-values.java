@@ -3,37 +3,21 @@ class Solution {
         List<int[]> li = new ArrayList<>();
         int p1=0, p2=0;
         while (p1 < nums1.length && p2 < nums2.length) {
-            int[] curr = new int[2];
             if (nums1[p1][0] == nums2[p2][0]) {
-                curr[0] = nums1[p1][0];
-                curr[1] = nums1[p1++][1] + nums2[p2++][1];
+                li.add(new int[]{nums1[p1][0], nums2[p2++][1] + nums1[p1++][1]});
             }
-            else if (nums1[p1][0] < nums2[p2][0]) {
-                curr[0] = nums1[p1][0];
-                curr[1] = nums1[p1++][1];
-            }
-            else {
-                curr[0] = nums2[p2][0];
-                curr[1] = nums2[p2++][1];
-            }
-            li.add(curr);
+            else if (nums1[p1][0] < nums2[p2][0]) li.add(nums1[p1++]);
+            else li.add(nums2[p2++]);
         }
 
         while (p1 < nums1.length) {
-            li.add(new int[]{ nums1[p1][0], nums1[p1++][1] });
+            li.add(nums1[p1++]);
         }
 
         while (p2 < nums2.length) {
-            li.add(new int[]{ nums2[p2][0], nums2[p2++][1] });
+            li.add(nums2[p2++]);
         }
 
-        int size = li.size();
-        int[][] result = new int[size][2];
-        for (int i=0; i<size; i++) {
-            result[i][0] = li.get(i)[0];
-            result[i][1] = li.get(i)[1];
-        }
-
-        return result;
+        return li.toArray(new int[li.size()][]);
     }
 }
