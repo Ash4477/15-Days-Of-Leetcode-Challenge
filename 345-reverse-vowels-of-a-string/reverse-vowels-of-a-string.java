@@ -2,17 +2,18 @@ class Solution {
     public String reverseVowels(String s) {
         int left = 0;
         int right = s.length()-1;
-        StringBuilder res = new StringBuilder(s);
+        char[] arr = s.toCharArray();
 
         while (left < right) {
-            while (left < right && !isVowel(s.charAt(left))) left++;
-            while (left < right && !isVowel(s.charAt(right))) right--;
-            res.setCharAt(left, s.charAt(right));
-            res.setCharAt(right, s.charAt(left));
+            while (left < right && !isVowel(arr[left])) left++;
+            while (left < right && !isVowel(arr[right])) right--;
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
             left ++; right--;
         }
 
-        return res.toString();
+        return new String(arr);
     }
 
     public boolean isVowel(char c) {
