@@ -11,7 +11,7 @@ class Solution {
             else {
                 if (st.isEmpty()) return false;
                 char top = st.pop();
-                if (top != s.charAt(i)) return false;
+                if (top != c) return false;
             }
         }
         return st.isEmpty();
