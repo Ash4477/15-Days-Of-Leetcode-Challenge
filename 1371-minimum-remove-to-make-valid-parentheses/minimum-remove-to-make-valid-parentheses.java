@@ -11,13 +11,14 @@ class Solution {
             }
         }
 
-        if (open != 0)
+        if (open != 0) {
             for (int i=arr.length-1; i>=0; i--) {
                 if (arr[i] == '(' && open > 0) {
                     arr[i] = '*';
                     open--;
                 }
             }
+        }
 
         int p=0;
         for (int i=0; i< arr.length; i++) {
