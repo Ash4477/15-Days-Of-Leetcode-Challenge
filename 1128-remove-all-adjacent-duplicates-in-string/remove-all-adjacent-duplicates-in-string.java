@@ -10,9 +10,9 @@ class Solution {
         }
 
         while (!st.isEmpty()) {
-            res.append(st.pop());
+            res.insert(0, st.pop());
         }
 
-        return res.reverse().toString();
+        return res.toString();
     }
 }
