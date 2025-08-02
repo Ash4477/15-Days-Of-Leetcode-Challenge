@@ -1,11 +1,9 @@
 class Solution {
     public int findTheWinner(int n, int k) {
-       return fn(n,k)+1;
-    }
-
-    private int fn(int n, int k) {
-        if (n == 1) return 0;
-
-        return (fn(n-1, k)+k)%n;
+        int res = 0;
+        for (int player_num = 2; player_num <= n; ++player_num) {
+            res = (res + k) % player_num;
+        }
+        return res + 1;
     }
 }
