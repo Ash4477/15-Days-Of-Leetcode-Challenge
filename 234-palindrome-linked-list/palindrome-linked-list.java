@@ -11,17 +11,36 @@
 class Solution {
     ListNode curr;
     public boolean isPalindrome(ListNode head) {
-        curr = head;
-        return isPalind(head);
-    }
+        ListNode slow = head;
+        ListNode fast = head.next;
 
-    public boolean isPalind(ListNode head) {
-        if (head == null) {
-            return true;
+        while (fast!=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        ListNode head2 = reverse(slow.next);
+        slow.next = null;
+
+        while (head2 != null) {
+            if (head2.val != head.val) return false;
+            head2 = head2.next;
+            head = head.next;
         }
 
-        boolean ans = isPalind(head.next) && (head.val == curr.val);
-        curr = curr.next;
-        return ans;
+        return true;
+    }
+
+    public ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr!=null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
     }
 }
