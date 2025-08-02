@@ -18,7 +18,7 @@ class Solution {
             curr = curr.next;
         }
 
-        int midIdx = (int) Math.ceil(size/2);
+        int midIdx = size/2;
         curr = head;
         for (int i=0; i<midIdx; i++) {
             curr = curr.next;
