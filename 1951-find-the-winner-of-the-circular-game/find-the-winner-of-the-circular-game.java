@@ -1,17 +1,11 @@
 class Solution {
     public int findTheWinner(int n, int k) {
-        ArrayList<Integer> circle = new ArrayList<>();
-        for (int i = 1; i <= n; ++i) {
-            circle.add(i);
-        }
-        int currIdx = 0;
+       return fn(n,k)+1;
+    }
 
-        while (circle.size() > 1) {
-            int nextRemoval = (currIdx + k - 1) % circle.size();
-            circle.remove(nextRemoval);
-            currIdx = nextRemoval;
-        }
+    private int fn(int n, int k) {
+        if (n == 1) return 0;
 
-        return circle.get(0);
+        return (fn(n-1, k)+k)%n;
     }
 }
