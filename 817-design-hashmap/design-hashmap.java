@@ -15,7 +15,7 @@ class MyHashMap {
     private int size;
     
     public MyHashMap() {
-        size = 769;
+        size = 1000;
         data = new ListNode[size];
     }
     
