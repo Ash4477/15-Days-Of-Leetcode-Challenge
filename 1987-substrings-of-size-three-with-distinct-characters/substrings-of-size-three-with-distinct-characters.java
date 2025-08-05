@@ -1,5 +1,7 @@
 class Solution {
     public int countGoodSubstrings(String s) {
+        if (s.length() < 3) return 0;
+
         char[] arr = s.toCharArray();
         int count = 0;
         for (int i=2; i<arr.length; i++) {
