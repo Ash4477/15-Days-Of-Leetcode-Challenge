@@ -10,7 +10,7 @@ class Solution {
             while (win.size() > 0 && nums[win.peekLast()] < nums[i]) win.pollLast();
             win.offerLast(i);
             
-            if (i >= k-1) result[i-k+1] = nums[win.peek()];
+            if (i >= k-1) result[i-k+1] = nums[win.peekFirst()];
         }
 
         return result;
