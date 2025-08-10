@@ -14,17 +14,22 @@
  * }
  */
 class Solution {
-    int count;
     public int countNodes(TreeNode root) {
-        count = 0;
-        fn(root);
-        return count;
+        if (root == null) return 0;
+
+        int lh = getHeight(root.left);
+        int rh = getHeight(root.right);
+
+        if (lh == rh) return (1 << lh) + countNodes(root.right);
+        else return (1 << rh) + countNodes(root.left);
     }
 
-    public void fn(TreeNode root) {
-        if (root == null) return;
-        count++;
-        fn(root.left);
-        fn(root.right);
+    public int getHeight(TreeNode root) {
+        int height = 0;
+        while (root != null) {
+            root = root.left;
+            height++;
+        }
+        return height;
     }
 }
