@@ -17,8 +17,8 @@ class Solution {
     public boolean isEqual(TreeNode r1, TreeNode r2) {
         if (r1 == null && r2 == null) return true;
         if (r1 == null || r2 == null) return false;
-        boolean res = isEqual(r1.left, r2.left) && isEqual(r1.right, r2.right);
-        return (res && (r1.val == r2.val));
+        if (r1.val != r2.val) return false;
+        return isEqual(r1.left, r2.left) && isEqual(r1.right, r2.right);
     }
 
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
