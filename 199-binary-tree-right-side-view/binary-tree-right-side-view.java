@@ -18,15 +18,12 @@ class Solution {
         List<Integer> res = new ArrayList<>();
         int level = 0;
         helperFn(root, level, res);
-        for (int i : res) System.out.println(i);
         return res;
     }
 
     public void helperFn(TreeNode root, int level, List<Integer> res) {
         if (root == null) return;
-
         if (res.size() == level) res.add(root.val);
-
         helperFn(root.right, level+1, res);
         helperFn(root.left, level+1, res);
     }
