@@ -16,19 +16,18 @@
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null) return res;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-
-        while (q.size() > 0) {
-            int size = q.size();
-            for (int i=0; i<size; i++) {
-                TreeNode n = q.poll();
-                if (i == size-1) res.add(n.val);
-                if (n.left != null) q.add(n.left);
-                if (n.right != null) q.add(n.right);
-            }
-        }
+        int level = 0;
+        helperFn(root, level, res);
+        for (int i : res) System.out.println(i);
         return res;
+    }
+
+    public void helperFn(TreeNode root, int level, List<Integer> res) {
+        if (root == null) return;
+
+        if (res.size() == level) res.add(root.val);
+
+        helperFn(root.right, level+1, res);
+        helperFn(root.left, level+1, res);
     }
 }
