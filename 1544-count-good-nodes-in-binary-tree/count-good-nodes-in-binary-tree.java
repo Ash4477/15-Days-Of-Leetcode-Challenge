@@ -24,8 +24,8 @@ class Solution {
         int count = root.val >= max ? 1 : 0;
         max = Math.max(root.val, max);
 
-        count += dfs(root.left, max);
-        count += dfs(root.right, max);
+        if (root.left != null) count += dfs(root.left, max);
+        if (root.right != null) count += dfs(root.right, max);
 
         return count;
     }
