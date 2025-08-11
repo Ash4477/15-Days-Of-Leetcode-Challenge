@@ -14,14 +14,13 @@
  * }
  */
 class Solution {
-    private int count;
+    private int count = 0;
     public int goodNodes(TreeNode root) {
-        count = 0;
         helperFn(root, root.val);
         return count;
     }
     
-    public void helperFn(TreeNode root, int max) {
+    private void helperFn(TreeNode root, int max) {
         if (root == null) {
             return;
         }
@@ -31,8 +30,8 @@ class Solution {
             max = root.val;
         }
 
-        helperFn(root.left, max);
-        helperFn(root.right, max);
+        if (root.left!=null) helperFn(root.left, max);
+        if (root.right!=null) helperFn(root.right, max);
     }
 
 }
