@@ -1,7 +1,24 @@
 class Solution {
     public int findMin(int[] nums) {
-        Arrays.sort(nums);
-        return nums[0];
+        int n = nums.length;
+
+        int start = 0, end = n - 1, mid, ans = Integer.MAX_VALUE;
+
+        while (start <= end) {
+            mid = start + ((end-start) / 2);
+
+            if (nums[start] <= nums[mid]) {
+                ans = Math.min(ans, nums[start]);
+                start = mid + 1;
+            }
+
+            else {
+                ans = Math.min(ans, nums[mid]);
+                end = mid - 1;
+            }
+        }
+
+        return ans;
     }
 
     
