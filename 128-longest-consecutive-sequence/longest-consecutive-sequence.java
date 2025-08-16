@@ -8,9 +8,14 @@ class Solution {
         int maxL = 0;
         for (int n : set) {
             if (!set.contains(n-1)) {
-                int currL = 0;
-                while (set.contains(n+currL)) currL++;
-                maxL = Math.max(currL, maxL);
+                int currLen = 1;
+
+                while (set.contains(n + 1)) {
+                    n++;
+                    currLen++;
+                }
+
+                maxL = Math.max(currLen, maxL);
             }
         }
 
