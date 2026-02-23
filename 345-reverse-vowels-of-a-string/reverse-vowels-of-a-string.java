@@ -18,11 +18,7 @@ class Solution {
     }
 
     public boolean isVowel(char c) {
-        char[] vowels = new char[]{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-        for (char v: vowels) {
-            if (c == v) return true;
-        }
-
-        return false;
+        char lowerC = Character.toLowerCase(c);
+    return lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u';
     }
 }
