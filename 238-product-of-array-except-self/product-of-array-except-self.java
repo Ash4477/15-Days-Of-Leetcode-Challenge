@@ -7,7 +7,6 @@ class Solution {
         
         for (int i=1; i<len-1; i++) {
             result[i] = (totalProduct);
-            System.out.println(i + " : " + result[i]);
             totalProduct *= nums[i];
         }
 
@@ -16,7 +15,6 @@ class Solution {
 
         for (int i=len-2; i>=0; i--) {
             result[i] *= totalProduct;
-            System.out.println(i + " : " + result[i]);
             totalProduct *= nums[i];
         }
 
