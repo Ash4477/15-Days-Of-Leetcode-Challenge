@@ -1,21 +1,25 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int n = nums.length;
-        int[] ans = new int[n];
-
-        int currProd = nums[0];
-        ans[0] = 1;
-        for (int i=1; i<n; i++) {
-            ans[i] = currProd;
-            currProd *= nums[i];
+        int len = nums.length;
+        int[] result = new int[len];
+        int totalProduct = nums[0];
+        result[0] = 1;
+        
+        for (int i=1; i<len-1; i++) {
+            result[i] = (totalProduct);
+            System.out.println(i + " : " + result[i]);
+            totalProduct *= nums[i];
         }
 
-        currProd = nums[n-1];
-        for (int i = n-2; i>=0; i--) {
-            ans[i] *= currProd;
-            currProd *= nums[i];
+        result[len-1] = totalProduct;
+        totalProduct = nums[len-1];
+
+        for (int i=len-2; i>=0; i--) {
+            result[i] *= totalProduct;
+            System.out.println(i + " : " + result[i]);
+            totalProduct *= nums[i];
         }
 
-        return ans;
+        return result;
     }
 }
